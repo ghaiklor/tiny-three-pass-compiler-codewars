@@ -36,5 +36,6 @@ describe('Token', () => {
     assert.equal(Token.VARIABLE, 'VARIABLE');
     assert.equal(Token.NUMBER, 'NUMBER');
     assert.equal(Token.OPERATOR, 'OPERATOR');
+    assert.equal(Token.EOF, 'EOF');
   });
 });

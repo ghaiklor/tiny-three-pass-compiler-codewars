@@ -21,7 +21,7 @@ class Token {
    * @returns {String} Returns string representation of a token name
    */
   getType() {
-    return this._type;
+    return this._type || null;
   }
 
   /**
@@ -30,7 +30,7 @@ class Token {
    * @returns {String} Returns a character(s) from the source code of a program
    */
   getValue() {
-    return this._value;
+    return this._value || null;
   }
 
   /**
@@ -131,6 +131,16 @@ class Token {
    */
   static get OPERATOR() {
     return 'OPERATOR';
+  }
+
+  /**
+   * Returns type of a token that represents end of file.
+   *
+   * @static
+   * @returns {String}
+   */
+  static get EOF() {
+    return 'EOF';
   }
 }
 
