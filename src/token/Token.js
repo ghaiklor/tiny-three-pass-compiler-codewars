@@ -30,7 +30,9 @@ class Token {
    * @returns {String} Returns a character(s) from the source code of a program
    */
   getValue() {
-    return this._value || null;
+    return typeof this._value === 'undefined'
+      ? null
+      : this._value;
   }
 
   /**

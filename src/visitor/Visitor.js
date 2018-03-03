@@ -19,6 +19,26 @@ class Visitor {
 
     return visitor.call(this, node);
   }
+
+  /**
+   * Triggers when NumberLiteral node is visiting.
+   *
+   * @param {NumberLiteral} node
+   * @returns {*}
+   */
+  onNumberLiteral(node) {
+    return node.getValue();
+  }
+
+  /**
+   * Triggers when VariableIdentifier node is visiting.
+   *
+   * @param {VariableIdentifier} node
+   * @returns {*}
+   */
+  onVariableIdentifier(node) {
+    return node.getIdentifier();
+  }
 }
 
 module.exports = Visitor;

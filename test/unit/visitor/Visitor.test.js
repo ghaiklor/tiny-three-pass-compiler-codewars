@@ -4,9 +4,11 @@ const Token = require('../../../src/token');
 const AST = require('../../../src/ast');
 
 const NUMBER_TOKEN = Token.create(Token.NUMBER, '400');
+const VARIABLE_TOKEN = Token.create(Token.VARIABLE, 'foo');
 const OPERATOR_PLUS_TOKEN = Token.create(Token.OPERATOR, '+');
 const NUMBER_LITERAL_NODE = new AST.NumberLiteral(NUMBER_TOKEN);
 const BINARY_OPERATOR_NODE = new AST.BinaryOperator(NUMBER_LITERAL_NODE, OPERATOR_PLUS_TOKEN, NUMBER_LITERAL_NODE);
+const VARIABLE_IDENTIFIER_NODE = new AST.VariableIdentifier(VARIABLE_TOKEN);
 
 class EmptyVisitor extends Visitor {
 }
@@ -38,9 +40,9 @@ describe('Visitor', () => {
     const emptyVisitor = new EmptyVisitor();
 
     assert.throws(
-      () => emptyVisitor.visit(NUMBER_LITERAL_NODE),
+      () => emptyVisitor.visit(BINARY_OPERATOR_NODE),
       Error,
-      'There is no visitor for NumberLiteral'
+      'There is no visitor for BinaryOperator'
     );
   });
 
@@ -48,5 +50,11 @@ describe('Visitor', () => {
     const binaryVisitor = new BinaryVisitor();
 
     assert.equal(binaryVisitor.visit(BINARY_OPERATOR_NODE), 800);
+  });
+
+  it('Should properly visit VariableIdentifier with default handler', () => {
+    const visitor = new EmptyVisitor();
+
+    assert.equal(visitor.visit(VARIABLE_IDENTIFIER_NODE), 'foo');
   });
 });
