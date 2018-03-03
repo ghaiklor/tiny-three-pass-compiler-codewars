@@ -1,0 +1,12 @@
+sudo: false
+dist: trusty
+language: node_js
+node_js:
+  - "node"
+  - "lts/*"
+env:
+  - ENVIRONMENT=test
+  - NODE_ENV=test
+cache:
+  directories:
+    - "node_modules"

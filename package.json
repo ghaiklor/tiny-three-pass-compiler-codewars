@@ -1,0 +1,35 @@
+{
+  "name": "tiny-three-pass-compiler-codewars",
+  "version": "1.0.0",
+  "description": "Three-pass compiler for a simple programming language into a small assembly language",
+  "keywords": [
+    "compiler",
+    "nodejs",
+    "node",
+    "javascript",
+    "tiny",
+    "assembly"
+  ],
+  "homepage": "https://github.com/ghaiklor/tiny-three-pass-compiler-codewars#readme",
+  "bugs": {
+    "url": "https://github.com/ghaiklor/tiny-three-pass-compiler-codewars/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Eugene Obrezkov",
+    "email": "ghaiklor@gmail.com",
+    "url": "http://ghaiklor.com/"
+  },
+  "contributors": [],
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghaiklor/tiny-three-pass-compiler-codewars.git"
+  },
+  "scripts": {
+    "test": "exit 0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
