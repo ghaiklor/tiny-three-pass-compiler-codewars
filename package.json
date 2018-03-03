@@ -28,14 +28,16 @@
   },
   "scripts": {
     "build": "npm run lint && npm run test",
+    "coveralls": "cat coverage/lcov.info | coveralls",
     "lint": "eslint .",
-    "test": "nyc --reporter=html --reporter=text mocha"
+    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha"
   },
   "engines": {
     "node": ">=8.0.0"
   },
   "devDependencies": {
     "chai": "4.1.2",
+    "coveralls": "3.0.0",
     "eslint": "4.18.2",
     "eslint-plugin-node": "6.0.1",
     "mocha": "5.0.1",
