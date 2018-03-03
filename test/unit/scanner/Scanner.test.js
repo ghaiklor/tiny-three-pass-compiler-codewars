@@ -77,4 +77,16 @@ describe('Scanner', () => {
     assert.equal(scanner.getNextToken().toString(), 'Token(NUMBER,1234)');
     assert.equal(scanner.getNextToken().toString(), 'Token(EOF,null)');
   });
+
+  it('Should throw an error if some unknown character', () => {
+    const scanner = new Scanner('foo bar $');
+
+    assert.equal(scanner.getNextToken().toString(), 'Token(VARIABLE,foo)');
+    assert.equal(scanner.getNextToken().toString(), 'Token(VARIABLE,bar)');
+    assert.throws(
+      () => scanner.getNextToken(),
+      Error,
+      'Unexpected character: $'
+    );
+  })
 });

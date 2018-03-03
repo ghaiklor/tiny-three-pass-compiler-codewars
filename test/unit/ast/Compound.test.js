@@ -39,4 +39,14 @@ describe('AST::Compound', () => {
       '\n)'
     );
   });
+
+  it('Should throw an error if trying to push not a node', () => {
+    const compound = new AST.Compound();
+
+    assert.throws(
+      () => compound.pushNode('NOT_NODE'),
+      Error,
+      'Unexpected node: NOT_NODE'
+    );
+  })
 });

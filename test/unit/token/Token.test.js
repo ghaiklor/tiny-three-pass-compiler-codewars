@@ -38,4 +38,10 @@ describe('Token', () => {
     assert.equal(Token.OPERATOR, 'OPERATOR');
     assert.equal(Token.EOF, 'EOF');
   });
+
+  it('Should return null if tokens type is not specified', () => {
+    const token = new Token();
+
+    assert.equal(token.toString(), 'Token(null,null)');
+  });
 });

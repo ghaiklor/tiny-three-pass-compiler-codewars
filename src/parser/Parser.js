@@ -47,6 +47,8 @@ class Parser {
 
       return new AST.FunctionDeclaration(argumentsList, expression);
     }
+
+    throw new Error(`Unexpected token: ${token} (expected to have ${Token.LEFT_BRACKET})`);
   }
 
   /**
@@ -129,6 +131,8 @@ class Parser {
       this.consume(Token.RIGHT_PARENTHESIS);
       return expression;
     }
+
+    throw new Error(`Unexpected token: ${token} (expected to have ${Token.NUMBER}, ${Token.VARIABLE}, ${Token.LEFT_PARENTHESIS})`);
   }
 
   /**

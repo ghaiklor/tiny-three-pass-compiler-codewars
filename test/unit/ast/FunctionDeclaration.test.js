@@ -21,4 +21,30 @@ describe('AST::FunctionDeclaration', () => {
     assert.instanceOf(node.getArgumentsList(), AST.ArgumentsList);
     assert.instanceOf(node.getExpression(), AST.BinaryOperator);
   });
+
+  it('Should throw an error when setting not an ArgumentList node', () => {
+    assert.throws(
+      () => new AST.FunctionDeclaration('NOT_NODE'),
+      Error,
+      'Unexpected node: NOT_NODE'
+    );
+  });
+
+  it('Should properly convert to string', () => {
+    const node = new AST.FunctionDeclaration(ARGUMENTS_LIST_NODE, BINARY_OPERATOR_NODE);
+
+    assert.equal(
+      node.toString(),
+      'FunctionDeclaration(' +
+      '\nArgumentsList(' +
+      '\n\tVariableIdentifier(foo)' +
+      '\n)' +
+      '\nBinaryOperator(' +
+      '\n\tVariableIdentifier(foo)' +
+      '\n\t+' +
+      '\n\tVariableIdentifier(foo)' +
+      '\n)' +
+      '\n)'
+    );
+  });
 });
