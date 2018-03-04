@@ -58,4 +58,21 @@ describe('Optimizer::ConstantFolding', () => {
     assert.instanceOf(ast.getExpression().getRHS(), AST.NumberLiteral);
     assert.equal(ast.getExpression().getRHS().getValue(), 10);
   });
+
+  it('Should optimize the ast with a few levels in depth', () => {
+    const optimizer = new ConstantFolding();
+    const parser = new Parser('[] 10 + 20 + 30 + 40 + 50 + 60');
+    const ast = parser.parse();
+
+    assert.instanceOf(ast, AST.FunctionDeclaration);
+    assert.instanceOf(ast.getExpression(), AST.BinaryOperator);
+    assert.instanceOf(ast.getExpression().getLHS(), AST.NumberLiteral);
+    assert.equal(ast.getExpression().getLHS().getValue(), 10);
+    assert.instanceOf(ast.getExpression().getRHS(), AST.BinaryOperator);
+
+    const optimizedAST = optimizer.visit(ast);
+    assert.instanceOf(optimizedAST, AST.FunctionDeclaration);
+    assert.instanceOf(optimizedAST.getExpression(), AST.NumberLiteral);
+    assert.equal(optimizedAST.getExpression().getValue(), 210);
+  });
 });

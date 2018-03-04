@@ -16,35 +16,30 @@ class ConstantFolding extends Visitor {
    * @returns {NumberLiteral}
    */
   onBinaryOperator(node) {
-    let lhs = this.visit(node.getLHS());
-    let rhs = this.visit(node.getRHS());
+    let lhs = node.getLHS();
+    let rhs = node.getRHS();
     let operator = node.getOperator();
 
-    if (lhs instanceof AST.NumberLiteral) {
-      lhs = this.visit(lhs);
+    lhs = lhs instanceof AST.BinaryOperator ? this.visit(lhs) : lhs;
+    rhs = rhs instanceof AST.BinaryOperator ? this.visit(rhs) : rhs;
+
+    if (lhs instanceof AST.NumberLiteral && rhs instanceof AST.NumberLiteral) {
+      if (operator === '+') {
+        const number = Token.create(Token.NUMBER, this.visit(lhs) + this.visit(rhs));
+        return new AST.NumberLiteral(number);
+      } else if (operator === '-') {
+        const number = Token.create(Token.NUMBER, this.visit(lhs) - this.visit(rhs));
+        return new AST.NumberLiteral(number);
+      } else if (operator === '*') {
+        const number = Token.create(Token.NUMBER, this.visit(lhs) * this.visit(rhs));
+        return new AST.NumberLiteral(number);
+      } else {
+        const number = Token.create(Token.NUMBER, this.visit(lhs) / this.visit(rhs));
+        return new AST.NumberLiteral(number);
+      }
     }
 
-    if (rhs instanceof AST.NumberLiteral) {
-      rhs = this.visit(rhs);
-    }
-
-    if ((typeof lhs !== 'number') || (typeof rhs !== 'number')) {
-      return node;
-    }
-
-    if (operator === '+') {
-      const number = Token.create(Token.NUMBER, lhs + rhs);
-      return new AST.NumberLiteral(number);
-    } else if (operator === '-') {
-      const number = Token.create(Token.NUMBER, lhs - rhs);
-      return new AST.NumberLiteral(number);
-    } else if (operator === '*') {
-      const number = Token.create(Token.NUMBER, lhs * rhs);
-      return new AST.NumberLiteral(number);
-    } else {
-      const number = Token.create(Token.NUMBER, lhs / rhs);
-      return new AST.NumberLiteral(number);
-    }
+    return new AST.BinaryOperator(lhs, node.getToken(), rhs);
   }
 
   /**
