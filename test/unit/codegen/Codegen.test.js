@@ -52,28 +52,10 @@ describe('Codegen', () => {
     codegen.visit(optimizedAST);
     assert.equal(
       codegen.toString(),
-      'IM 10\n' +
-      'SW\n' +
       'AR 0\n' +
+      'SW\n' +
+      'IM 10\n' +
       'AD'
     );
   });
-
-  it('Should properly emit the assembly from one of examples in kata (un-optimized)', () => {
-    const parser = new Parser('[ x ] x + 2 * 5');
-    const ast = parser.parse();
-    const codegen = new Codegen();
-
-    codegen.visit(ast);
-    assert.equal(
-      codegen.toString(),
-      'IM 2\n' +
-      'SW\n' +
-      'IM 5\n' +
-      'MU\n' +
-      'SW\n' +
-      'AR 0\n' +
-      'AD'
-    )
-  })
 });
