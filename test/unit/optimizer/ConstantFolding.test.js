@@ -54,6 +54,8 @@ describe('Optimizer::ConstantFolding', () => {
     assert.instanceOf(optimizedAST, AST.FunctionDeclaration);
     assert.instanceOf(optimizedAST.getExpression(), AST.BinaryOperator);
     assert.instanceOf(ast.getExpression().getLHS(), AST.VariableIdentifier);
+    assert.equal(ast.getExpression().getLHS().getIdentifier(), 'foo');
     assert.instanceOf(ast.getExpression().getRHS(), AST.NumberLiteral);
+    assert.equal(ast.getExpression().getRHS().getValue(), 10);
   });
 });
