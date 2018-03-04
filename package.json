@@ -27,10 +27,11 @@
     "url": "git+https://github.com/ghaiklor/tiny-three-pass-compiler-codewars.git"
   },
   "scripts": {
-    "build": "npm run lint && npm run test",
     "coveralls": "cat coverage/lcov.info | coveralls",
     "lint": "eslint .",
-    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha"
+    "test": "mocha",
+    "test:coverage": "nyc --reporter=html --reporter=text --reporter=lcov mocha",
+    "travis": "npm run lint && npm run test:coverage"
   },
   "engines": {
     "node": ">=8.0.0"
