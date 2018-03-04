@@ -1,10 +1,12 @@
 # Tiny Three-Pass Compiler
 
+_Three-pass compiler for a simple programming language into a small assembly language - [link to original task](https://www.codewars.com/kata/tiny-three-pass-compiler/javascript)_
+
+_The whole code and tests in this repository is implemented in two days (literally, on my weekends, when I had free time). So, of course, there are bugs I don't know about, but I don't have a time to fix them as well :)_
+
 [![Build Status](https://travis-ci.org/ghaiklor/tiny-three-pass-compiler-codewars.svg?branch=master)](https://travis-ci.org/ghaiklor/tiny-three-pass-compiler-codewars)
 [![Coverage Status](https://coveralls.io/repos/github/ghaiklor/tiny-three-pass-compiler-codewars/badge.svg?branch=master)](https://coveralls.io/github/ghaiklor/tiny-three-pass-compiler-codewars?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/ghaiklor/tiny-three-pass-compiler-codewars.svg)](https://greenkeeper.io/)
-
-_Three-pass compiler for a simple programming language into a small assembly language - [link to original task](https://www.codewars.com/kata/tiny-three-pass-compiler/javascript)_
 
 ## How to play with it
 
