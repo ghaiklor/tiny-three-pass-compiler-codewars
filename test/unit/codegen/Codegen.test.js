@@ -115,4 +115,16 @@ describe('Codegen', () => {
       'Unknown variable: foo'
     );
   });
+
+  it('Should have all the opcodes in static methods', () => {
+    assert.equal(Codegen.IM(10), 'IM 10');
+    assert.equal(Codegen.AR(10), 'AR 10');
+    assert.equal(Codegen.SW(), 'SW');
+    assert.equal(Codegen.PU(), 'PU');
+    assert.equal(Codegen.PO(), 'PO');
+    assert.equal(Codegen.AD(), 'AD');
+    assert.equal(Codegen.SU(), 'SU');
+    assert.equal(Codegen.MU(), 'MU');
+    assert.equal(Codegen.DI(), 'DI');
+  });
 });

@@ -27,6 +27,15 @@ class Codegen extends Visitor {
   }
 
   /**
+   * Get generated assembly code.
+   *
+   * @returns {Array<String>}
+   */
+  getCode() {
+    return this._code;
+  }
+
+  /**
    * Emits one instruction (push it into the sequence of assembly op codes).
    *
    * @param {String} instruction Assembly instruction
@@ -124,7 +133,7 @@ class Codegen extends Visitor {
    * @returns {String}
    */
   toString() {
-    return this._code.join('\n');
+    return this.getCode().join('\n');
   }
 
   /**
