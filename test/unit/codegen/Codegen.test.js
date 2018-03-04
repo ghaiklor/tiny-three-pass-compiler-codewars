@@ -58,4 +58,61 @@ describe('Codegen', () => {
       'AD'
     );
   });
+
+  it('Should properly emit assembly for operator -', () => {
+    const parser = new Parser('[ x y ] x - y');
+    const ast = parser.parse();
+    const codegen = new Codegen();
+
+    codegen.visit(ast);
+    assert.equal(
+      codegen.toString(),
+      'AR 0\n' +
+      'SW\n' +
+      'AR 1\n' +
+      'SU'
+    );
+  });
+
+  it('Should properly emit assembly for operator *', () => {
+    const parser = new Parser('[ x y ] x * y');
+    const ast = parser.parse();
+    const codegen = new Codegen();
+
+    codegen.visit(ast);
+    assert.equal(
+      codegen.toString(),
+      'AR 0\n' +
+      'SW\n' +
+      'AR 1\n' +
+      'MU'
+    );
+  });
+
+  it('Should properly emit assembly for operator /', () => {
+    const parser = new Parser('[ x y ] x / y');
+    const ast = parser.parse();
+    const codegen = new Codegen();
+
+    codegen.visit(ast);
+    assert.equal(
+      codegen.toString(),
+      'AR 0\n' +
+      'SW\n' +
+      'AR 1\n' +
+      'DI'
+    );
+  });
+
+  it('Should throw an error if unknown variable', () => {
+    const parser = new Parser('[ x y ] x / foo');
+    const ast = parser.parse();
+    const codegen = new Codegen();
+
+    assert.throws(
+      () => codegen.visit(ast),
+      Error,
+      'Unknown variable: foo'
+    );
+  });
 });
