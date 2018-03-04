@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/*eslint no-process-exit: ["OFF"]*/
 const blessed = require('blessed');
 const compiler = require('../');
 const source = process.argv[2] || '';
